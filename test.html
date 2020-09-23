@@ -9,8 +9,8 @@
 
 <body>
   <div id="gogocarto">test</div>
-  <script src="js/scripts.js">
-  document.addEventListener('readystatechange', () => {
+  <script>
+   document.addEventListener('readystatechange', () => {
     if(document.readyState==='complete'){
       goGoCarto('#gogocarto', "https://annuaire-sante-msb.gogocarto.fr/api/gogocartojs-conf.json");
     }
