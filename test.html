@@ -3,11 +3,18 @@
   <meta charset="utf-8">
 
   <title>test gogocarto</title>
-
+  <script src="https://annuaire-sante-msb.gogocarto.fr/js/gogocarto.js"></script>  
+  <link rel="stylesheet" href="https://annuaire-sante-msb.gogocarto.fr/assets/css/gogocarto.min.css">   
 </head>
 
 <body>
-  <div>test</div>
-  <script src="js/scripts.js"></script>
+  <div id="gogocarto">test</div>
+  <script src="js/scripts.js">
+  document.addEventListener('readystatechange', () => {
+    if(document.readyState==='complete'){
+      goGoCarto('#gogocarto', "https://annuaire-sante-msb.gogocarto.fr/api/gogocartojs-conf.json");
+    }
+   });
+  </script>
 </body>
 </html>
