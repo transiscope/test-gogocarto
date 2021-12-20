@@ -12,12 +12,28 @@
 <body>
   <div id="gogocarto"></div>
   <script>
-   document.addEventListener('readystatechange', () => {
+  const getConf = async function() {
+    const  responseConf = await fetch('https://transiscope-en.gogocarto.fr/api/gogocartojs-conf.json');
+    const  confRaw = await responseConf.json();
+    // console.log(confRaw);
+    const conf={
+      ...confRaw,
+      language:"en",
+    }
+    // console.log(conf);
+    return conf;
+  }
+  document.addEventListener('readystatechange', () => {
     if(document.readyState==='complete'){
-      goGoCarto('#gogocarto', "https://transiscope-en.gogocarto.fr/api/gogocartojs-conf.json");
-      //goGoCarto('#gogocarto', "https://annuaire-sante-msb.gogocarto.fr/api/gogocartojs-conf.json");
+      getConf().then(conf=>{
+        console.log(conf);
+        goGoCarto('#gogocarto', conf);
+      })
+      // const conf = getConf();
+      // goGoCarto('#gogocarto', conf);
     }
    });
+    
   </script>
 </body>
 </html>
